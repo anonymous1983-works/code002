@@ -29,9 +29,20 @@ body.show-nav-tabs.show-breadcrumb{
   top: 117px;
 }
 .iframe-top,
-.myObject
+.myObject,
+.hide-levelB.show-levelB .iframe-top,
+.hide-levelB.show-levelB .myObject,
+.show-levelB .iframe-top,
+.show-levelB .myObject
 {
   top: 156px;
+  bottom: 40px;
+}
+
+.hide-levelB .iframe-top,
+.hide-levelB .myObject
+{
+  top: 117px;
   bottom: 40px;
 }
 .sidebar-mini .nav-tabs-fixed-top,

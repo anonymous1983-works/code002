@@ -3,19 +3,14 @@
       classBootModalAjax: '.boot-modal-ajax'
     }
   };
-
-
   /**********************************
   Config jquery.dynatree
   */
   _canLog = MELIS.plugins.tree.debug;
-
-
   /* Remove Envato Frame */
   if (window.location != window.parent.location) top.location.href = document.location.href;
   (function($, window) {
-    window.onunload = function() {
-    };
+    window.onunload = function() {};
     //alert($('.tab-pane.active.full-width').height());
     //$('.iframe-content').attr({"width":$('.tab-pane.active.full-width').width()+'px',"height":$('.tab-pane.active.full-width').height()+'px'});
     window.initTinymce = function() {
@@ -44,10 +39,7 @@
     $(window).resize(function() {
       resizeIframe();
     });
-
     //$().alert('close');
-
-
     window.initConextMenu = function() {
       $('.context').contextmenu({
         target: '#context-menu',
@@ -60,9 +52,6 @@
       });
     };
     initConextMenu();
-
-
-
     $('#myModal').on('show.bs.modal', function(event) {
       var button = $(event.relatedTarget); // Button that triggered the modal
       var href = button.data('model-href'); // Extract info from data-* attributes
@@ -79,29 +68,16 @@
           modal.find('.modal-body').html(msg);
         }
       });
-
     });
-
-    window.initNavTabs = function() {
-
-      $('.content-nav-tabs.nav-tabs-fixed-top .widget-head > ul > li').click(function() {
-        if ($(this).hasClass('nav-tabs-li-id-home')) {
-          $('.content-options.options-fixed-top').hide();
-        } else {
-          $('.content-options.options-fixed-top').show();
-        }
-      })
-    };
-
-    initNavTabs();
     // --- Initialize first Dynatree -------------------------------------------
-
-    $('#'+MELIS.plugins.tabs.levelB.idLevelB+' li > a').bind('click', function(){
+    $('#' + MELIS.plugins.tabs.levelB.idLevelB + ' li > a').bind('click', function() {
       //console.log($(this).data('option'));
-      $('#'+MELIS.plugins.tabs.levelA.idLevelA+' li').attr('data-currentOption',$(this).data('option'))
+      $('#' + MELIS.plugins.tabs.levelA.idLevelA + ' li').attr('data-currentOption', $(this).data('option'))
     });
-
-    $("#"+MELIS.plugins.tree.id).dynatree({
+    MelisHelper.initShowOptions();
+    MelisHelper.initOptions();
+    //initShowOptions
+    $("#" + MELIS.plugins.tree.id).dynatree({
       fx: {
         height: "toggle",
         duration: 200
@@ -128,7 +104,6 @@
           success: function(node) {
             DynatreeEvents.initNicescrollRails();
             initConextMenu();
-
           }
         });
       },
@@ -191,7 +166,6 @@
         }
       }
     });
-
     //$.notify("Melis init success !", "success");
     $.gritter.add({
       // (string | mandatory) the heading of the notification

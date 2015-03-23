@@ -26,30 +26,38 @@
             "context_target": "#context-menu",
             "expand": true,
             "children": [{
-                "title": "Sub-item 2.1.1.1",
+                "title": "Melise Technologie",
                 "context": true,
                 "context_target": "#context-menu",
                 "iconeTab": "file",
                 "tab": "cdss",
-                "options": ["edit", "properties", "versionning"]
+                "options": ["edit", "properties", "versionning"],
+                "typeload": "ifarme",
+                "src": "http://www.melisagency.fr/"
             }, {
-                "title": "Sub-item 2.1.2.2",
+                "title": "Features",
                 "context": true,
                 "context_target": "#context-menu",
                 "iconeTab": "file",
-                "options": ["edit", "meta", "versionning"]
+                "options": ["edit", "meta", "versionning"],
+                "typeload": "ifarme",
+                "src": "http://www.melistechnology.com/features/id/7"
             }, {
-                "title": "Sub-item 2.1.1.3",
+                "title": "Strategic Partner",
                 "context": true,
                 "context_target": "#context-menu",
                 "iconeTab": "file",
-                "options": ["properties", "meta", "versionning"]
+                "options": ["edit", "properties", "meta", "versionning"],
+                "typeload": "ifarme",
+                "src": "http://www.melistechnology.com/partners/strategic-partner/id/31"
             }, {
-                "title": "Sub-item 2.1.2.4",
+                "title": "Support",
                 "context": true,
                 "context_target": "#context-menu",
                 "iconeTab": "file",
-                "options": ["edit", "properties", "meta", "versionning"]
+                "options": ["edit", "properties", "meta", "versionning"],
+                "typeload": "ifarme",
+                "src": "http://www.melistechnology.com/support/editions-overview/id/38#professional"
             }]
         }, {
             "title": "Sub-item 2.1.2",
@@ -64,7 +72,7 @@
             "context_target": "#context-menu",
             "iconeTab": "cogwheel",
             "tab": "cdss",
-            "options": ["edit", "properties", "versionning"]
+            "options": ["edit", "properties", "meta", "versionning"]
         }, {
             "title": "Sub-item 2.1.4",
             "context": true,

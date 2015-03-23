@@ -11,7 +11,7 @@
     // Include header
     include "templates/header.php"; ?>
   </head>
-  <body class="show-breadcrumb show-nav-tabs">
+  <body class="show-breadcrumb show-nav-tabs hide-levelB">
 
     <?php 
     // Include Body

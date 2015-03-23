@@ -17,10 +17,8 @@ var MelisHelper = (function(window) {
     var args = Array.prototype.slice.apply(arguments, [1]);
     // Prepend timestamp
     var dt = new Date();
-    var tag = dt.getHours() + ":" + dt.getMinutes() + ":" +
-      dt.getSeconds() + "." + dt.getMilliseconds();
+    var tag = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds() + "." + dt.getMilliseconds();
     args[0] = tag + " - " + args[0];
-
     try {
       switch (mode) {
         case "info":
@@ -46,8 +44,55 @@ var MelisHelper = (function(window) {
     }
   }
   return {
-    log: function(mode, msg){
+    log: function(mode, msg) {
       _log(mode, msg);
+    },
+    getIdMenuItem: function(key) {
+      return MELIS.plugins.tree.idItem + key;
+    },
+    getIdLevelA: function(key) {
+      return MELIS.plugins.tabs.levelA.idItem + key;
+    },
+    getIdPageFormKey: function(key) {
+      return MELIS.plugins.pages.idItem + key;
+    },
+    getIdPage: function() {
+      return MELIS.plugins.pages.idItem + MELIS.active_key + '_' + MELIS.active_option;
+    },
+    getIdMenuItemCurrent: function() {
+      return MELIS.plugins.tree.idItem + MELIS.active_key;
+    },
+    getIdLevelACurrent: function() {
+      return MELIS.plugins.tabs.levelA.idItem + MELIS.active_key;
+    },
+    getIdPageCurrent: function() {
+      return MELIS.plugins.pages.idItem + MELIS.active_key;
+    },
+    getActiveCurrentItemLevelA: function() {
+      if ($('#' + MELIS.plugins.tabs.levelA.idLevelA + " li#" + MelisHelper.getIdLevelACurrent()).data('option')) {
+        MELIS.active_option = $('#' + MELIS.plugins.tabs.levelA.idLevelA + " li#" + MelisHelper.getIdLevelACurrent()).data('option');
+      } else {
+        MELIS.active_option = $('#' + MELIS.plugins.tabs.levelA.idLevelA + " li#" + MelisHelper.getIdLevelACurrent()).data('defaultoptions')
+      }
+      return true;
+    },
+    setActiveCurrentItemLevelB: function() {
+      if (MelisHelper.getActiveCurrentItemLevelA()) {
+        //console.log("setActiveCurrentItemLevelB :: " + MELIS.active_key + "     " + MELIS.active_option);
+        $("#" + MELIS.plugins.tabs.levelB.idLevelB + " li.active").removeClass("active");
+        $("#" + MELIS.plugins.tabs.levelB.idLevelB + " li[data-option=" + MELIS.active_option + "]").addClass("active");
+      }
+      
+      MelisHelper.setActiveCurrentView();
+    },
+    setActiveCurrentView: function() {
+      console.log("x");
+      console.log(MelisHelper.templateContent());
+      //if(!document.getElementById(MelisHelper.getIdPage()))
+      //MelisHelper.templateContent()
+        $("#"+MELIS.idBodyContentLoader).append(MelisHelper.templateContent());
+
+//      console.log("setActiveCurrentView :: " + MELIS.active_key + "     " + MELIS.active_option);
     },
     initTinymce: function() {
       tinymce.init({
@@ -63,33 +108,73 @@ var MelisHelper = (function(window) {
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
       });
     },
-    initNewItemMainTabs: function(key, element, options){
-      $(element).on('click', function(){
-        //MELIS.active_key = key;
-        MelisHelper.initShowOptions(options);
-        MELIS.active_key = key;
-        $("#"+MELIS.plugins.tree.idItem+key).trigger('click'); 
-        $("#"+MELIS.plugins.tree.id+" .dynatree-node."+MELIS.plugins.tree.classActive).removeClass(MELIS.plugins.tree.classActive);
-        $("#"+MELIS.plugins.tree.idItem+key+" > .dynatree-node").addClass(MELIS.plugins.tree.classActive);
-        
-      })
+    templateContent: function() {
+      //var typeload = $("#"+getIdLevelACurrent()).data('typeload'),
+      //src = $("#"+getIdLevelACurrent()).data('src');
+
+      //return typeload+"    "+src;
+
+      return "xxxxxxxxx";
+/*
+      var x = jQuery('<div/>', {
+        id: MelisHelper.getIdPage(),
+        class: 'active',
+        'data-key': MELIS.active_key,
+        //'data-option': $("#"+getIdLevelACurrent()).data(active_option),
+        'data-typeload': typeload,
+        'data-src': src,
+        html: '<iframe name="myiframe" id="iframe-'+MelisHelper.getIdPage()+'" class="myiframe iframe-content" src="'+src+'" width="100%" height="100%"></iframe>'
+      });
+
+      console.log(x);
+      //  return x;*/
     },
-    initShowOptions: function(items){
-      //MelisHelper.log(items);
-      $("#"+MELIS.plugins.tabs.levelB.idLevelB+" li").hide();
-      items.forEach(function(entry) {
-        $("#"+MELIS.plugins.tabs.levelB.idLevelB+" li[data-option="+entry+"]").show();
+    tempaleContentIframe: function(){
+      return "<ifra"
+    },
+    initNewItemMainTabs: function(key, element, options) {
+      $(element).on('click', function() {
+        //MELIS.active_key = key;
+        MELIS.active_key = key;
+        MelisHelper.initItemDynatree(key);
+        MelisHelper.initShowOptions(options);
       });
     },
-    initActiveDynatree: function(key){
-      $("#"+MELIS.plugins.tree.idItem+key).trigger('click'); 
-        $("#"+MELIS.plugins.tree.id+" .dynatree-node."+MELIS.plugins.tree.classActive).removeClass(MELIS.plugins.tree.classActive);
-        $("#"+MELIS.plugins.tree.idItem+key+" > .dynatree-node").addClass(MELIS.plugins.tree.classActive);
+    initItemDynatree: function(key) {
+      $("#" + MELIS.plugins.tree.idItem + key).trigger('click');
+      $("#" + MELIS.plugins.tree.id + " .dynatree-node." + MELIS.plugins.tree.classActive).removeClass(MELIS.plugins.tree.classActive);
+      $("#" + MELIS.plugins.tree.idItem + key + " > .dynatree-node").addClass(MELIS.plugins.tree.classActive);
     },
-    initOptions: function(){
-      ("#"+MELIS.plugins.tabs.levelB.idLevelB+" li").bind("click", function(){
+    initActiveDynatree: function(key) {
+      $("#" + MELIS.plugins.tree.idItem + key).trigger('click');
+      $("#" + MELIS.plugins.tree.id + " .dynatree-node." + MELIS.plugins.tree.classActive).removeClass(MELIS.plugins.tree.classActive);
+      $("#" + MELIS.plugins.tree.idItem + key + " > .dynatree-node").addClass(MELIS.plugins.tree.classActive);
+    },
+    initShowOptions: function(items) {
+      if (items) {
+        $("#" + MELIS.plugins.tabs.levelB.idWrapLevelB).show();
+        $('body').removeClass("hide-levelB").addClass("show-levelB");
+        $("#" + MELIS.plugins.tabs.levelB.idLevelB + " li").hide();
+        var i = 0,
+          ActiveCurrentItemLevelA = MelisHelper.getActiveCurrentItemLevelA();
+        items.forEach(function(entry) {
+          i++;
+          $("#" + MELIS.plugins.tabs.levelB.idLevelB + " li[data-option=" + entry + "]").show();
+        });
+        //alert(MELIS.active_option);
+        MelisHelper.setActiveCurrentItemLevelB();
+      } else {
+        $("#" + MELIS.plugins.tabs.levelB.idWrapLevelB).hide();
+        $('body').removeClass("show-levelB").addClass("hide-levelB");
+      }
+      //MelisHelper.log(items);
+    },
+    initOptions: function() {
+      $("#" + MELIS.plugins.tabs.levelB.idLevelB + " li").bind("click", function() {
         var entry = $(this).data('option');
-        console.log(entry);
+        MELIS.active_option = entry;
+        $('#' + MELIS.plugins.tabs.levelA.idLevelA + " li#" + MelisHelper.getIdLevelACurrent()).attr('data-option', entry);
+        //MelisHelper.setActiveCurrentItemLevelB(entry);
       });
     }
   };
