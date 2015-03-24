@@ -24,7 +24,7 @@ var DynatreeEvents = (function(window) {
         'data-defaultOptions': data.options[0],
         'data-typeload': data.typeload,
         'data-src': data.src,
-        html: '<a class="glyphicons ' + iconeTab + '" data-key="' + key + '" data-href="#' + getIdPage(key) + '" data-toggle="tab">\
+        html: '<a class="glyphicons ' + iconeTab + '" data-key="' + key + '" data-href="#' + getIdPageFormKey(key) + '" data-toggle="tab">\
                   <i></i>' + title + '\
                </a>\
                <a class="close" data-key="' + key + '">Close</a>'

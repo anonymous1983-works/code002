@@ -57,7 +57,7 @@ var MelisHelper = (function(window) {
       return MELIS.plugins.pages.idItem + key;
     },
     getIdPage: function() {
-      return MELIS.plugins.pages.idItem + MELIS.active_key + '_' + MELIS.active_option;
+      return MELIS.plugins.pages.idItem + '-key_' + MELIS.active_key + '-option_' + MELIS.active_option;
     },
     getIdMenuItemCurrent: function() {
       return MELIS.plugins.tree.idItem + MELIS.active_key;
@@ -86,13 +86,12 @@ var MelisHelper = (function(window) {
       MelisHelper.setActiveCurrentView();
     },
     setActiveCurrentView: function() {
+      
       console.log("x");
-      console.log(MelisHelper.templateContent());
-      //if(!document.getElementById(MelisHelper.getIdPage()))
-      //MelisHelper.templateContent()
-        $("#"+MELIS.idBodyContentLoader).append(MelisHelper.templateContent());
-
-//      console.log("setActiveCurrentView :: " + MELIS.active_key + "     " + MELIS.active_option);
+      //$("#"+MELIS.idBodyContentLoader+' .'+MELIS.classNewPageInclude.commun).removeClass('active').hide();
+      
+      //$("#"+MELIS.idBodyContentLoader).append(MelisHelper.templateContent());
+      
     },
     initTinymce: function() {
       tinymce.init({
@@ -109,25 +108,33 @@ var MelisHelper = (function(window) {
       });
     },
     templateContent: function() {
-      //var typeload = $("#"+getIdLevelACurrent()).data('typeload'),
-      //src = $("#"+getIdLevelACurrent()).data('src');
+      
+      /*var _typeload = $("#"+MelisHelper.getIdLevelACurrent()).data('typeload'),
+      _src = $("#"+MelisHelper.getIdLevelACurrent()).data('src'),
+      _class = '';
 
-      //return typeload+"    "+src;
+      switch(_typeload) {
+        case 'iframe':
+            _class = ' '+MELIS.classNewPageInclude.iframe+' ';
+            break;
+        case 'xhr':
+            _class = ' '+MELIS.classNewPageInclude.xhr+' ';
+            break;
+        default:
+            _class = ' '+MELIS.classNewPageInclude.iframe+' ';
+      }
 
-      return "xxxxxxxxx";
-/*
-      var x = jQuery('<div/>', {
+      return jQuery('<div/>', {
         id: MelisHelper.getIdPage(),
-        class: 'active',
+        class: 'active page-loaded '+_class,
         'data-key': MELIS.active_key,
-        //'data-option': $("#"+getIdLevelACurrent()).data(active_option),
-        'data-typeload': typeload,
-        'data-src': src,
-        html: '<iframe name="myiframe" id="iframe-'+MelisHelper.getIdPage()+'" class="myiframe iframe-content" src="'+src+'" width="100%" height="100%"></iframe>'
-      });
-
-      console.log(x);
-      //  return x;*/
+        'data-option': MELIS.active_option,
+        'data-typeload': _typeload,
+        'data-src': _src,
+        html: '<iframe name="myiframe" id="iframe-'+MelisHelper.getIdPage()+'" class="myiframe iframe-content" src="'+_src+'" width="'+$('#'+MELIS.idBodyContentLoader).width()+'px" height="'+$('#'+MELIS.idBodyContentLoader).height()+'px"></iframe>'
+          //html: "<div>fff</div>"
+      });*/
+return "xxxx";
     },
     tempaleContentIframe: function(){
       return "<ifra"

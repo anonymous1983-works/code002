@@ -32,12 +32,16 @@ _canLog = MELIS.plugins.tree.debug;
       });
     };
     initTinymce();
+
+    window.resizeIframeFn = function(){
+      $('.'+MELIS.classNewPageInclude.iframe).attr({
+          "width": $('#'+MELIS.idBodyContentLoader).width() + 'px',
+          "height": $('#'+MELIS.idBodyContentLoader).height() + 'px'
+        });
+    };
     window.resizeIframe = function() {
       setTimeout(function() {
-        $('.iframe-content').attr({
-          "width": $('.tab-pane.active.full-width').width() + 'px',
-          "height": $('.tab-pane.active.full-width').height() + 'px'
-        });
+        resizeIframeFn();
       }, 100);
     };
     $(window).resize(function() {

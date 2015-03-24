@@ -213,6 +213,10 @@ ________________________________________________________________________________
   border-radius: 0;
   text-align: center;
 }
+.body-content-loader{
+  position: relative;
+}
+
 
 
 

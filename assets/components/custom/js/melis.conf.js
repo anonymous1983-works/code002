@@ -2,8 +2,14 @@ var MELIS = {
   debug: true,
   active_key: 0,
   active_option: '',
+  
   bodyLoader: 'body-content-loader',
-  idBodyContentLoader :'id-maintabs',
+  idBodyContentLoader :'id-body-content-loader',
+  classNewPageInclude:{
+    commun: 'page-loaded',
+    iframe: 'include-content-iframe',
+    xhr: 'include-content-xhr'
+  },
   plugins: {
     tree: {
       id: "id-mod-menu-dynatree",

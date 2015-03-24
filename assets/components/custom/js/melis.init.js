@@ -31,8 +31,8 @@
     window.resizeIframe = function() {
       setTimeout(function() {
         $('.iframe-content').attr({
-          "width": $('.tab-pane.active.full-width').width() + 'px',
-          "height": $('.tab-pane.active.full-width').height() + 'px'
+          "width": $('#'+MELIS.idBodyContentLoader).width() + 'px',
+          "height": $('#'+MELIS.idBodyContentLoader).height() + 'px'
         });
       }, 100);
     };

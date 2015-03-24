@@ -32,7 +32,7 @@
                 "iconeTab": "file",
                 "tab": "cdss",
                 "options": ["edit", "properties", "versionning"],
-                "typeload": "ifarme",
+                "typeload": "iframe",
                 "src": "http://www.melisagency.fr/"
             }, {
                 "title": "Features",
@@ -40,7 +40,7 @@
                 "context_target": "#context-menu",
                 "iconeTab": "file",
                 "options": ["edit", "meta", "versionning"],
-                "typeload": "ifarme",
+                "typeload": "iframe",
                 "src": "http://www.melistechnology.com/features/id/7"
             }, {
                 "title": "Strategic Partner",
@@ -48,7 +48,7 @@
                 "context_target": "#context-menu",
                 "iconeTab": "file",
                 "options": ["edit", "properties", "meta", "versionning"],
-                "typeload": "ifarme",
+                "typeload": "iframe",
                 "src": "http://www.melistechnology.com/partners/strategic-partner/id/31"
             }, {
                 "title": "Support",
@@ -56,7 +56,7 @@
                 "context_target": "#context-menu",
                 "iconeTab": "file",
                 "options": ["edit", "properties", "meta", "versionning"],
-                "typeload": "ifarme",
+                "typeload": "iframe",
                 "src": "http://www.melistechnology.com/support/editions-overview/id/38#professional"
             }]
         }, {
