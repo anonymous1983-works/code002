@@ -16,6 +16,7 @@ var DynatreeEvents = (function(window) {
     templateItemLevelA = function(data, key, title) {
       var idMenuItem = getIdMenuItem(key),
         iconeTab = ($("#" + idMenuItem + " .item-tree").data("iconetab") != "") ? $("#" + idMenuItem + " .item-tree").data("iconetab") : MELIS.plugins.tabs.levelA.iconeDefault;
+
       return jQuery('<li/>', {
         id: getIdLevelA(key),
         class: 'active',
@@ -24,15 +25,18 @@ var DynatreeEvents = (function(window) {
         'data-defaultOptions': data.options[0],
         'data-typeload': data.typeload,
         'data-src': data.src,
-        html: '<a class="glyphicons ' + iconeTab + '" data-key="' + key + '" data-href="#' + getIdPageFormKey(key) + '" data-toggle="tab">\
+        html: '<a class="glyphicons ' + iconeTab + '" data-key="' + key + '" data-href="#' + MelisHelper.getIdPageFormKey(key) + '" data-toggle="tab">\
                   <i></i>' + title + '\
                </a>\
                <a class="close" data-key="' + key + '">Close</a>'
       });
     },
     templateItemLevelAActive = function(key) {
+
       $('#' + MELIS.plugins.tabs.levelA.idLevelA + ' ul li.active').removeClass('active');
+
       $('#' + MELIS.plugins.tabs.levelA.idLevelA + ' ul #' + getIdLevelA(key)).addClass('active');
+
     };
   return {
     initNicescrollRails: function() {
@@ -53,11 +57,14 @@ var DynatreeEvents = (function(window) {
       if (node.getEventTargetType(event) == 'title' || node.data.key == MELIS.plugins.tabs.home.key) {
         key = node.data.key;
         title = node.data.title;
+
         //MelisHelper.initNewItemMainTabs
         if ($('#' + getIdLevelA(key)).length) {
+
           templateItemLevelAActive(key);
           $('#' + MELIS.plugins.tabs.levelA.idLevelA + ' ul #' + getIdLevelA(key)).show();
         } else {
+
           $('#' + MELIS.plugins.tabs.levelA.idLevelA + ' ul').append(templateItemLevelA(node.data, key, title));
           MelisHelper.initNewItemMainTabs(key, '#' + MELIS.plugins.tabs.levelA.idLevelA + ' ul #' + getIdLevelA(key), node.data.options);
           // Bind event close
