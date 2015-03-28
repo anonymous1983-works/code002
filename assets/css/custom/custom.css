@@ -11,6 +11,10 @@ body.show-nav-tabs{
 body.show-nav-tabs.show-breadcrumb{
   padding-top: 154px;
 }
+
+/*body.bodyxhr #id-body-content-loader{
+    overflow: auto;
+}*/
 .nav-tabs-fixed-top,
 .breadcrumb-fixed-top,
 .options-fixed-top,
