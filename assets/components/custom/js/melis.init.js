@@ -3,6 +3,8 @@
       classBootModalAjax: '.boot-modal-ajax'
     }
   };
+
+  MELIS.active_key = "home";
   /**********************************
   Config jquery.dynatree
   */

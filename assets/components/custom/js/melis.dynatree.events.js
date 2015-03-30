@@ -65,8 +65,12 @@ var DynatreeEvents = (function (window) {
         },
         onClick: function (node, event) {
 
+            console.log('click');
+
             var key, title;
             MELIS.active_key = node.data.key;
+
+            console.log(MELIS.active_key);
             if (node.getEventTargetType(event) == 'title' || node.data.key == MELIS.plugins.tabs.home.key) {
                 key = node.data.key;
                 title = node.data.title;

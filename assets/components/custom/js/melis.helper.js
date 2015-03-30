@@ -106,10 +106,17 @@ var MelisHelper = (function (window) {
 
             $("#" + MELIS.idBodyContentLoader + ' .' + MELIS.classNewPageInclude.commun).removeClass('active').hide();
 
-            if (!$("#" + MelisHelper.getIdPage()).length) {
-                $("#" + MELIS.idBodyContentLoader).append(MelisHelper.templateContent());
-            } else {
-                $("#" + MelisHelper.getIdPage()).addClass('active').show();
+
+            //alert(MELIS.active_key);
+
+            if(MELIS.active_key == "home"){
+                $("#id-maintabs-home").show();
+            }else{
+                if (!$("#" + MelisHelper.getIdPage()).length) {
+                    $("#" + MELIS.idBodyContentLoader).append(MelisHelper.templateContent());
+                } else {
+                    $("#" + MelisHelper.getIdPage()).addClass('active').show();
+                }
             }
 
 
